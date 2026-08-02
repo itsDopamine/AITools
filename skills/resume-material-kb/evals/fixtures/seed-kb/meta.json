@@ -1,0 +1,37 @@
+{
+  "kb_version": "1.0",
+  "title": "绠€鍘嗙礌鏉愮煡璇嗗簱锛堣瘎娴嬬瀛愶級",
+  "created_at": "2026-07-01T10:00:00+08:00",
+  "updated_at": "2026-07-01T10:00:00+08:00",
+  "authors": [
+    { "name": "Alex Dev", "email": "alex.dev@example.com" }
+  ],
+  "date_range": {
+    "start": "2026-01-01",
+    "end": "2026-07-01"
+  },
+  "repos": [
+    {
+      "id": "sample-repo",
+      "path": "C:/Users/zguoan/.agents/skills/resume-material-kb/evals/fixtures/sample-repo",
+      "remote": "",
+      "endpoint": {
+        "commit": "58fc3f9aaed92e0d24d825fbb50e6df8f43b8045",
+        "committed_at": "2026-07-01T09:00:00+08:00",
+        "collected_at": "2026-07-01T10:00:00+08:00"
+      },
+      "stats": {
+        "commits_scanned": 2,
+        "work_items": 1
+      }
+    }
+  ],
+  "paths": {
+    "works": "works",
+    "analyses": "analyses",
+    "highlights": "project-highlights",
+    "changelog": "changelog"
+  },
+  "notes": "绉嶅瓙搴擄細endpoint 鍋滃湪 template library skeleton锛屼笉鍚悗缁?upload tip 鎻愪氦銆?
+}
+

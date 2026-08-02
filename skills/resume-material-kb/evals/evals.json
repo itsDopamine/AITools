@@ -1,0 +1,56 @@
+{
+  "skill_name": "resume-material-kb",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请使用简历素材知识库 skill，做一次【初始化】。知识库输出到本评测工作区的 kb-out/。仓库：evals/fixtures/sample-repo 与 evals/fixtures/sample-repo-b（两个都写入同一知识库）。commit 作者筛选：name=`Alex Dev`，email=`alex.dev@example.com`。补充文档：evals/fixtures/sample-docs/tech-design-template-library.md。要求：按标准目录产出人可读知识库；工作项用 STAR；含 SWOT 与金字塔；含项目全局亮点/可学习经验；meta.json 记录每个仓库的 endpoint.commit 与日期范围；必须脱敏（文档和代码里的内网 API、corp id 不可原样出现在对外素材中）。不要生成最终排版简历，也不要调用简历生成类 skill。",
+      "expected_output": "完整多文件知识库：index.md、works/*、analyses/swot.md、analyses/pyramid.md、project-highlights/*、changelog/*、meta.json（两仓库均有 endpoint）。STAR 卡片覆盖 Alex 的提交与技术方案文档；Other Person 的提交不作为本人工作项；敏感 URL/客户或 corp 数字被脱敏或改写为模拟接口。",
+      "files": [
+        "evals/fixtures/sample-repo",
+        "evals/fixtures/sample-repo-b",
+        "evals/fixtures/sample-docs/tech-design-template-library.md"
+      ],
+      "expectations": [
+        "Output contains meta.json with repos array length 2 and non-empty endpoint.commit for each repo",
+        "Output contains index.md, analyses/swot.md, analyses/pyramid.md, at least one works/*.md and one changelog file",
+        "Work cards include STAR sections Situation, Task, Action, Result",
+        "Desensitized outputs do not contain meeting-inner.corp.local or corp/998877",
+        "Commits by Other Person are not presented as the user's own STAR work items",
+        "project-highlights contains at least one markdown file with learnable experience",
+        "No final HTML/DOCX resume is generated as a primary deliverable"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "请使用简历素材知识库 skill 做【定期更新】。先把 evals/fixtures/seed-kb 复制到本评测工作区的 kb-seed/ 作为已有知识库（复制后把 meta.json 里 sample-repo 的 path 改成 evals/fixtures/sample-repo 的绝对路径）。作者仍为 Alex Dev / alex.dev@example.com。基于 seed 里已有 endpoint，只增量处理之后的提交，更新知识库。要求：推进 endpoint；为 upload tip 相关增量更新或新建 STAR 卡片；写 changelog；脱敏内部 API；保持人可读；不要生成最终简历。",
+      "expected_output": "知识库在种子基础上增量更新：endpoint 推进到包含 upload tip 的最新 Alex 提交；changelog 说明增量；作品卡片反映 upload tip；敏感内网路径被脱敏。",
+      "files": [
+        "evals/fixtures/seed-kb",
+        "evals/fixtures/sample-repo",
+        "evals/fixtures/sample-docs/tech-design-template-library.md"
+      ],
+      "expectations": [
+        "meta.json endpoint.commit for sample-repo advances beyond the seed endpoint 58fc3f9aaed92e0d24d825fbb50e6df8f43b8045",
+        "A changelog update file exists describing the incremental run",
+        "Updated or new work card mentions upload tip or template upload capability",
+        "Desensitized outputs do not contain meeting-inner.corp.local",
+        "Existing seed work card is not silently deleted"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "只给我看 evals/fixtures/sample-docs/tech-design-template-library.md 和说明：作者是 Alex Dev。请初始化一个最小简历素材知识库到 kb-docs-only/（本评测工作区下）。这次【没有可用 git 仓库】（或你不要去扫真实业务仓）。要求仍然输出标准目录、STAR（可标注来源仅为文档）、SWOT、金字塔、脱敏后的接口描述，以及 meta.json（repos 可为空数组或标注 documents_only）。不要生成最终简历文件。",
+      "expected_output": "无仓库场景下仍能从技术方案沉淀人可读知识库；接口被脱敏；STAR/SWOT/金字塔齐全；meta 能表达 documents_only 或空 repos。",
+      "files": [
+        "evals/fixtures/sample-docs/tech-design-template-library.md"
+      ],
+      "expectations": [
+        "Output KB contains works card derived from the tech design doc with STAR sections",
+        "SWOT and pyramid files exist",
+        "Sensitive internal API host meeting-inner.corp.local does not appear in works/analyses/highlights markdown",
+        "meta.json exists and does not claim fake git endpoints for nonexistent repos",
+        "No HTML/DOCX resume primary deliverable"
+      ]
+    }
+  ]
+}
