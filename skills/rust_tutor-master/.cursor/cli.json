@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "permissions": {
+    "allow": [
+      "Shell(ls)"
+    ],
+    "deny": []
+  },
+  "model": "Claude 4.5 Sonnet (Thinking)"
+}

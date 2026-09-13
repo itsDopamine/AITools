@@ -1,0 +1,22 @@
+# 开发文件
+*.log
+*.md~
+.DS_Store
+
+# 测试和开发目录
+test/
+tests/
+.vscode/
+.idea/
+
+# Git 相关
+.git/
+.gitignore
+.gitattributes
+
+# 本地 book 目录（用户自己生成）
+book/
+
+# Yarn
+yarn.lock
+yarn-error.log

@@ -1,0 +1,46 @@
+{
+  "name": "@ksxz/rust-tutor",
+  "version": "2.0.1",
+  "description": "基于Cursor CLI和Rust官方教程的Rust专家",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "rust-tutor": "./bin/rust-tutor.js"
+  },
+  "scripts": {
+    "setup": "node src/setup.js",
+    "update": "node src/update-book.js",
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "rust",
+    "learning",
+    "tutor",
+    "ai",
+    "agent",
+    "cursor",
+    "cli"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/rust-tutor.git"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    ".cursorrules",
+    "README.md"
+  ],
+  "maintainers": [
+    {
+      "name": "hulei",
+      "email": "hulei@wps.cn"
+    }
+  ],
+  "dependencies": {}
+}
